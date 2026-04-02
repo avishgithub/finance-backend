@@ -53,3 +53,44 @@ def get_transactions():
         "date": t.date,
         "notes": t.notes
     } for t in transactions]
+
+@transaction_bp.route('/transactions/<int:id>', methods=['PUT'])
+def update_transaction(id):
+    if not check_role(['admin']):
+        return {"error": "Access denied"}, 403
+
+    data = request.json
+
+    if not data:
+        return {"error": "Invalid JSON input"}, 400
+
+    t = Transaction.query.get(id)
+
+    if not t:
+        return {"error": "Transaction not found"}, 404
+
+    # Update fields
+    t.amount = data.get('amount', t.amount)
+    t.type = data.get('type', t.type)
+    t.category = data.get('category', t.category)
+    t.date = data.get('date', t.date)
+    t.notes = data.get('notes', t.notes)
+
+    db.session.commit()
+
+    return {"message": "Transaction updated successfully"}
+
+@transaction_bp.route('/transactions/<int:id>', methods=['DELETE'])
+def delete_transaction(id):
+    if not check_role(['admin']):
+        return {"error": "Access denied"}, 403
+
+    t = Transaction.query.get(id)
+
+    if not t:
+        return {"error": "Transaction not found"}, 404
+
+    db.session.delete(t)
+    db.session.commit()
+
+    return {"message": "Transaction deleted successfully"}
