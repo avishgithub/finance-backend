@@ -118,11 +118,11 @@ python app.py
 
 ### 💰 Transactions
 
-* **POST /transactions → Create transaction (Admin only)
-* **GET /transactions → Get all transactions
-* **GET /transactions?type=income → Filter transactions
-* **PUT /transactions/<id> → Update transaction (Admin only)
-* **DELETE /transactions/<id> → Delete transaction (Admin only)
+* **POST /transactions** → Create transaction (Admin only)
+* **GET /transactions** → Get all transactions
+* **GET /transactions?type=income** → Filter transactions
+* **PUT /transactions/<id>** → Update transaction (Admin only)
+* **DELETE /transactions/<id>** → Delete transaction (Admin only)
 
 ---
 
