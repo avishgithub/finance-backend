@@ -29,6 +29,8 @@ The system is designed to demonstrate backend engineering concepts such as API d
 
 * Create transactions
 * View transactions
+* Update transactions
+* Delete transactions
 * Filter transactions by type (income/expense)
 
 ### 📊 Dashboard Summary APIs
@@ -116,9 +118,11 @@ python app.py
 
 ### 💰 Transactions
 
-* **POST /transactions** → Create transaction (Admin only)
-* **GET /transactions** → Get all transactions
-* **GET /transactions?type=income** → Filter transactions
+* **POST /transactions → Create transaction (Admin only)
+* **GET /transactions → Get all transactions
+* **GET /transactions?type=income → Filter transactions
+* **PUT /transactions/<id> → Update transaction (Admin only)
+* **DELETE /transactions/<id> → Delete transaction (Admin only)
 
 ---
 
